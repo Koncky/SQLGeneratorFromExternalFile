@@ -1,0 +1,40 @@
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+ 
+</div>
+
+<div class="content" role="main">
+
+  <input type="file" (change)="onChange($event)" #inputFile> <button (click)="removeData()">Remove Data</button>
+    <div *ngIf="isExcelFile === false">
+      This is not an Excel file
+    </div>
+    <span *ngIf="spinnerEnabled" class="k-i-loading k-icon"></span>
+    <table>
+      <th *ngFor="let key of keys" class="column">
+        <button (click)="onSelectedParam(key)">{{key}}</button>
+      </th>
+      <tr *ngFor="let item of dataXLSX.slice(0,5)">
+        <td *ngFor="let key of keys">
+          {{item[key]}}
+        </td>
+      </tr> 
+    </table>
+    <div class="parameter" *ngFor="let param of selectedParameters">
+      &#123;<span>{{ param.selectedPosition }}</span>&#125; - 
+      <span>{{ param.key }}</span>
+    </div>
+    <textarea id="sqlCreator" class="creator" [(ngModel)]="sqlCreatorTxt" rows="10"></textarea>
+    <button (click)="onTest()">Test 5</button>
+    <button (click)="onGenerateAll()">Generate for ALL</button>
+    <textarea id="sqlQuery" class="creator" [(ngModel)]="testQuery" rows="20"></textarea>
+</div>
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
